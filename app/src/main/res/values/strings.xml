@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">RecyclerDemo</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string-array name="iamges">
+        <item>"https://c-ssl.duitang.com/uploads/item/201602/23/20160223201833_yz8B4.thumb.700_0.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;size=b9999_10000&amp;sec=1573213840001&amp;di=e1951a7736efffdbb6c6f8d6faa831ce&amp;imgtype=0&amp;src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201507%2F27%2F20150727151430_E5CS4.thumb.700_0.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545652&amp;di=676ba8d66096f218c92c6c98bd6c213e&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201412%2F08%2F20141208125145_4z3VB.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545652&amp;di=5cbcb47b7df45e7579539831371b40f3&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201811%2F20%2F20181120201929_oitqg.jpg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545651&amp;di=df3826f1c5aae61f0f6dae69d184f7b4&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F25%2F20151125070626_dY3e4.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545651&amp;di=d7ed69015b1ff27c3e6675d1d115bb46&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201811%2F16%2F20181116155647_rnjvl.thumb.700_0.jpg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545651&amp;di=34360e3e3bdcb507a4c80801a67aefb0&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F09%2F20180709235634_HEh8H.thumb.700_0.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545650&amp;di=e7add7d71b293f589337c725bec8f30b&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F26%2F20151026093857_PQnmz.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545650&amp;di=054311be9a9efae58a03b662d88a125a&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F03%2F20150403H1738_vYkZV.jpeg"</item>
+        <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545649&amp;di=6f34f0bc1794b2a9e2eafab3de339726&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F08%2F20180708041356_t3szV.thumb.700_0.jpeg"</item>
+    </string-array>
+</resources>
