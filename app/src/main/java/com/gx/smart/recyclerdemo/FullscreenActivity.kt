@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.DiffUtil
+import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
 /**
@@ -50,6 +51,7 @@ class FullscreenActivity : AppCompatActivity() {
     }
     private var mDatas: List<Item>? = null
     private var mAdapter: ItemAdapter? = null
+    @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -78,6 +80,8 @@ class FullscreenActivity : AppCompatActivity() {
         mAdapter = ItemAdapter(mDatas as List<Item>)
         recyclerView.adapter = mAdapter
     }
+
+    @DebugLog
     private fun refresh() {
         val newDatas = initNewData()
         //文艺青年新宠
