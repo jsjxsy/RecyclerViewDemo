@@ -5,6 +5,9 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import androidx.recyclerview.widget.DiffUtil
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
 /**
@@ -45,7 +48,8 @@ class FullscreenActivity : AppCompatActivity() {
         }
         false
     }
-
+    private var mDatas: List<Item>? = null
+    private var mAdapter: ItemAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -61,13 +65,47 @@ class FullscreenActivity : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         dummy_button.setOnTouchListener(mDelayHideTouchListener)
-        val adapter = ItemAdapter(initData())
-        recyclerView.adapter = adapter
+//        init()
+        initPageData()
+        refresh.setOnClickListener {
+            refresh()
+        }
+    }
+
+
+    private fun init() {
+        mDatas = initData()
+        mAdapter = ItemAdapter(mDatas as List<Item>)
+        recyclerView.adapter = mAdapter
+    }
+    private fun refresh() {
+        val newDatas = initNewData()
+        //文艺青年新宠
+        //利用DiffUtil.calculateDiff()方法，传入一个规则DiffUtil.Callback对象，和是否检测移动item的 boolean变量，得到DiffUtil.DiffResult 的对象
+        val diffResult: DiffUtil.DiffResult =
+            DiffUtil.calculateDiff(DiffCallBack(mDatas, newDatas), true)
+        //利用DiffUtil.DiffResult对象的dispatchUpdatesTo（）方法，传入RecyclerView的Adapter，轻松成为文艺青年
+        diffResult.dispatchUpdatesTo(mAdapter!!)
+        //别忘了将新数据给Adapter
+        mAdapter?.setDatas(newDatas)
     }
 
     private fun initData(): List<Item> {
         val list = arrayListOf<Item>()
-        for (index in 1..1000) {
+        for (index in 1..100) {
+            val content = "this is item $index "
+            val images = resources.getStringArray(R.array.iamges)
+            val i = index % 10
+            Log.e("images", images[i])
+            val item = Item(images[i], content)
+            list.add(item)
+        }
+        return list
+    }
+
+    private fun initNewData(): List<Item> {
+        val list = arrayListOf<Item>()
+        for (index in 1..200) {
             val content = "this is item $index "
             val images = resources.getStringArray(R.array.iamges)
             val i = index % 10
@@ -80,11 +118,18 @@ class FullscreenActivity : AppCompatActivity() {
 
 
     private fun initPageData() {
-//        val data = LivePagedListBuilder(CustomItemDataSource(DataRepository()), PagedList.Config.Builder()
-//            .setPageSize(20)
-//            .setEnablePlaceholders(true)
-//            .setInitialLoadSizeHint(20)
-//            .build()).build()
+        val adapter = ItemPagingAdapter()
+        recyclerView.adapter = adapter
+        val data = LivePagedListBuilder(CustomPageDataSourceFactory(DataRepository(FullscreenActivity@this)),
+            PagedList.Config.Builder()
+            .setPageSize(20)
+            .setEnablePlaceholders(true)
+            .setInitialLoadSizeHint(20)
+            .build()).build()
+
+        data.observe(this, androidx.lifecycle.Observer {
+            adapter.submitList(it)
+        })
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

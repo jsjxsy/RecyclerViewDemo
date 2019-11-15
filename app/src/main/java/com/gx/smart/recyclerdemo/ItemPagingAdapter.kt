@@ -8,6 +8,10 @@ import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 /**
  * @author xiaosy
@@ -28,12 +32,33 @@ class ItemPagingAdapter : PagedListAdapter<Item, ItemPagingAdapter.ItemViewHolde
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.mContent.text = item?.content
 
+        if (position % 2 == 0) {
+            Glide.with(holder.mImage.context).load(item?.imageUrl)
+                .apply(RequestOptions.circleCropTransform())
+                .into(holder.mImage) //holder.mImage
+        } else if (position % 3 == 0) {
+            Glide.with(holder.mImage.context).load(item?.imageUrl)
+                .apply(RequestOptions.bitmapTransform(GlideBlurformation(holder.mImage.context)))
+                .into(holder.mImage) //holder.mImage
+        } else if (position % 5 == 0) {
+            Glide.with(holder.mImage.context).load(item?.imageUrl)
+                .transform(CenterCrop(), RoundedCorners(10))
+                .into(holder.mImage)
+        } else {
+            Glide.with(holder.mImage).load(item?.imageUrl).into(holder.mImage) //holder.mImage
+        }
+
+        Glide.with(holder.mGif).asGif().load(R.mipmap.sample).into(holder.mGif)
     }
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var mContent: TextView = itemView.findViewById(R.id.content)
         var mImage: ImageView = itemView.findViewById(R.id.image)
+        var mGif: ImageView = itemView.findViewById(R.id.gif)
+
     }
 
     companion object {
@@ -48,7 +73,7 @@ class ItemPagingAdapter : PagedListAdapter<Item, ItemPagingAdapter.ItemViewHolde
                 oldConcert: Item,
                 newConcert: Item
             ): Boolean =
-                oldConcert == newConcert
+                oldConcert.imageUrl == newConcert.imageUrl
         }
     }
 

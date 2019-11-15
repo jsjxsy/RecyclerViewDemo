@@ -40,4 +40,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     //paging
     implementation "android.arch.paging:runtime:1.0.0"
+    //adpater
+    implementation 'com.drakeet.multitype:multitype:4.0.0'
 }

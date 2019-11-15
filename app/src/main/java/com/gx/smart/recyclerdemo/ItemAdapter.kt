@@ -12,8 +12,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 
-class ItemAdapter(private val mList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class ItemAdapter(private var mList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
+    fun setDatas(mList: List<Item>) {
+        this.mList = mList
+    }
     //返回item个数
     override fun getItemCount(): Int {
         return mList.size
