@@ -16,4 +16,7 @@
         <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545650&amp;di=054311be9a9efae58a03b662d88a125a&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F03%2F20150403H1738_vYkZV.jpeg"</item>
         <item>"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1573214545649&amp;di=6f34f0bc1794b2a9e2eafab3de339726&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F08%2F20180708041356_t3szV.thumb.700_0.jpeg"</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

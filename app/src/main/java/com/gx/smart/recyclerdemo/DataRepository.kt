@@ -19,13 +19,14 @@ class DataRepository {
             val images = ctx.resources.getStringArray(R.array.iamges)
             val i = index % 10
             Log.e("images", images[i])
-            val item = Item(images[i], content)
+            val item = Item(index, images[i], content)
             data.add(item)
         }
     }
 
 
     fun loadData(size: Int): List<Item> {
+        Log.e(TAG, "loadData")
         return data.subList(0, size)
     }
 
@@ -41,7 +42,7 @@ class DataRepository {
     }
 
     fun loadPageData(page: Int, size: Int): List<Item>? {
-
+        Log.e(TAG, "loadPageData")
         val totalPage = if (data.size % size == 0) {
             data.size / size
         } else {
@@ -56,5 +57,9 @@ class DataRepository {
             return data.subList((page - 1) * size, data.size)
         }
         return data.subList((page - 1) * size, page * size)
+    }
+
+    companion object{
+        val TAG = DataRepository::class.java.toString()
     }
 }

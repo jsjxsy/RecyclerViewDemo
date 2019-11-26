@@ -12,8 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".MainActivity" />
         <activity
             android:name=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

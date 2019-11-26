@@ -68,7 +68,8 @@ class FullscreenActivity : AppCompatActivity() {
         // while interacting with the UI.
         dummy_button.setOnTouchListener(mDelayHideTouchListener)
 //        init()
-        initPageData()
+//        initPageData()
+        initItemData()
         refresh.setOnClickListener {
             refresh()
         }
@@ -101,7 +102,7 @@ class FullscreenActivity : AppCompatActivity() {
             val images = resources.getStringArray(R.array.iamges)
             val i = index % 10
             Log.e("images", images[i])
-            val item = Item(images[i], content)
+            val item = Item(i, images[i], content)
             list.add(item)
         }
         return list
@@ -114,7 +115,7 @@ class FullscreenActivity : AppCompatActivity() {
             val images = resources.getStringArray(R.array.iamges)
             val i = index % 10
             Log.e("images", images[i])
-            val item = Item(images[i], content)
+            val item = Item(i, images[i], content)
             list.add(item)
         }
         return list
@@ -130,6 +131,21 @@ class FullscreenActivity : AppCompatActivity() {
             .setEnablePlaceholders(true)
             .setInitialLoadSizeHint(20)
             .build()).build()
+
+        data.observe(this, androidx.lifecycle.Observer {
+            adapter.submitList(it)
+        })
+    }
+
+    private fun initItemData() {
+        val adapter = ItemPagingAdapter()
+        recyclerView.adapter = adapter
+        val data = LivePagedListBuilder(CustomItemDataSourceFactory(DataRepository(FullscreenActivity@this)),
+            PagedList.Config.Builder()
+                .setPageSize(20)
+                .setInitialLoadSizeHint(20)
+                .setEnablePlaceholders(true)
+                .build()).build()
 
         data.observe(this, androidx.lifecycle.Observer {
             adapter.submitList(it)

@@ -12,7 +12,15 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:scaleType="centerCrop"
-        tools:src="@drawable/ic_launcher_background"/>
+        tools:src="@drawable/ic_launcher_background"
+        />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/device"
+        android:scaleType="fitXY"
+        />
     <ImageView
         android:id="@+id/gif"
         android:layout_width="60dp"

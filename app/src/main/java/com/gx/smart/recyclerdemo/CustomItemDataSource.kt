@@ -1,5 +1,6 @@
 package com.gx.smart.recyclerdemo
 
+import android.util.Log
 import androidx.paging.PageKeyedDataSource
 
 /**
@@ -14,6 +15,7 @@ class CustomItemDataSource(val repository: DataRepository) : PageKeyedDataSource
     ) {
         val data = repository.loadData(params.requestedLoadSize)
         callback.onResult(data, null, 2)
+        Log.e(TAG, "loadInitial params placeholdersEnabled:${params.placeholdersEnabled} requestedLoadSize:${params.requestedLoadSize}")
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Item>) {
@@ -21,6 +23,7 @@ class CustomItemDataSource(val repository: DataRepository) : PageKeyedDataSource
         data?.let {
             callback.onResult(data, params.key + 1)
         }
+        Log.e(TAG, "loadAfter params key:${params.key} requestedLoadSize:${params.requestedLoadSize}")
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Item>) {
@@ -28,5 +31,10 @@ class CustomItemDataSource(val repository: DataRepository) : PageKeyedDataSource
         data?.let {
             callback.onResult(data, params.key - 1)
         }
+        Log.e(TAG, "loadBefore params key:${params.key} requestedLoadSize:${params.requestedLoadSize}")
+    }
+
+    companion object {
+        val TAG = CustomItemDataSource::class.java.toString()
     }
 }

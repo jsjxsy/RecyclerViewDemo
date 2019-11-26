@@ -5,4 +5,4 @@ package com.gx.smart.recyclerdemo
  * @create 2019-11-08
  * @Describe
  */
-data class Item(var imageUrl: String?, var content: String?)
+data class Item(var index: Int, var imageUrl: String?, var content: String?)
